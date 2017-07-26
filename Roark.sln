@@ -1,10 +1,8 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
-VisualStudioVersion = 15.0.26403.3
+VisualStudioVersion = 15.0.26430.16
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Roark", "Roark\Roark.csproj", "{5DA25590-280E-4BFD-8D92-D932CA80F92C}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Entities", "Entities\Entities.csproj", "{A942DBB2-C347-4E12-B435-FB5AA4FBC1F2}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Abstract", "Abstract\Abstract.csproj", "{75A73DC4-75AF-45A9-A48E-9317BBEF8F68}"
@@ -13,16 +11,26 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Infrastructure", "Infrastru
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Concrete", "Concrete\Concrete.csproj", "{6E51C7B1-DDF9-407D-9E86-9EE52207F9DD}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Roark_Web", "Roark_Web\Roark_Web.csproj", "{32608B9F-82DF-4379-A186-11C018183948}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Roark_Web.Tests", "Roark_Web.Tests\Roark_Web.Tests.csproj", "{C72A1A33-91CD-4F4C-87E7-694A38B14D2C}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Data", "Data", "{AC736A3C-B880-484D-AB3E-E393709D86C2}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Logic", "Logic", "{7030EFFA-E775-49A6-B662-0FCFADF30FC4}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "WebApplication", "WebApplication", "{B4F048A1-281A-4223-BB2E-04862604E5EF}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Contract", "Contract", "{F203B9BC-6F39-436F-AA61-437A46E2694B}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Testing", "Testing", "{A809A24F-1CFA-41B8-808B-F4B3D66B4CBC}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{5DA25590-280E-4BFD-8D92-D932CA80F92C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{5DA25590-280E-4BFD-8D92-D932CA80F92C}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{5DA25590-280E-4BFD-8D92-D932CA80F92C}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{5DA25590-280E-4BFD-8D92-D932CA80F92C}.Release|Any CPU.Build.0 = Release|Any CPU
 		{A942DBB2-C347-4E12-B435-FB5AA4FBC1F2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{A942DBB2-C347-4E12-B435-FB5AA4FBC1F2}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A942DBB2-C347-4E12-B435-FB5AA4FBC1F2}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -39,8 +47,24 @@ Global
 		{6E51C7B1-DDF9-407D-9E86-9EE52207F9DD}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{6E51C7B1-DDF9-407D-9E86-9EE52207F9DD}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{6E51C7B1-DDF9-407D-9E86-9EE52207F9DD}.Release|Any CPU.Build.0 = Release|Any CPU
+		{32608B9F-82DF-4379-A186-11C018183948}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{32608B9F-82DF-4379-A186-11C018183948}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{32608B9F-82DF-4379-A186-11C018183948}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{32608B9F-82DF-4379-A186-11C018183948}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C72A1A33-91CD-4F4C-87E7-694A38B14D2C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C72A1A33-91CD-4F4C-87E7-694A38B14D2C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C72A1A33-91CD-4F4C-87E7-694A38B14D2C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C72A1A33-91CD-4F4C-87E7-694A38B14D2C}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{A942DBB2-C347-4E12-B435-FB5AA4FBC1F2} = {AC736A3C-B880-484D-AB3E-E393709D86C2}
+		{75A73DC4-75AF-45A9-A48E-9317BBEF8F68} = {F203B9BC-6F39-436F-AA61-437A46E2694B}
+		{4EF1F7BC-63A7-4C03-8AC2-75D62F381E51} = {F203B9BC-6F39-436F-AA61-437A46E2694B}
+		{6E51C7B1-DDF9-407D-9E86-9EE52207F9DD} = {7030EFFA-E775-49A6-B662-0FCFADF30FC4}
+		{32608B9F-82DF-4379-A186-11C018183948} = {B4F048A1-281A-4223-BB2E-04862604E5EF}
+		{C72A1A33-91CD-4F4C-87E7-694A38B14D2C} = {A809A24F-1CFA-41B8-808B-F4B3D66B4CBC}
 	EndGlobalSection
 EndGlobal

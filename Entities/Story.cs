@@ -21,7 +21,7 @@ namespace Entities
         public List<StoryPart> StoryParts { get; set; }
         public bool HasRudewords { get; set; }
         public List<Rating> Ratings { get; set; }
-        public float AverageScore { get; set; }
+        public float AverageScore { get; set; } //vm
         public bool IsPublished { get; set; }
     }
 }
