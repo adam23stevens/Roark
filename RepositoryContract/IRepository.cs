@@ -11,11 +11,10 @@ namespace RepositoryContract
     {
         IEnumerable<Story> GetAllStories();
         Story GetStory(int StoryId);
-        IEnumerable<Story> GetUserStories(int StoryId);
+        IEnumerable<Story> GetUserStories(int UserId);
 
-        IEnumerable<StoryPart> GetStoryParts(int StoryId);
-        StoryPart GetStoryPart(int StoryId, int OrderNum);
-        IEnumerable<StoryPart> GetUserStoryParts(int UserId);
+        IEnumerable<StoryPart> GetStoryParts(int StoryId);        
+        IEnumerable<StoryPart> GetUserStoryParts(int StoryId, int UserId);
 
         IEnumerable<Rating> GetUserRatings(int UserId);
         IEnumerable<Rating> GetStoryRatings(int StoryId);
@@ -25,8 +24,7 @@ namespace RepositoryContract
         IEnumerable<User> GetStoryUsers(int StoryId);
         User Getuser(int UserId);
 
-        IEnumerable<Genre> GetAllGenres();
-        Genre GetStoryGenre(int StoryId);
+        IEnumerable<Genre> GetAllGenres();        
         Genre GetGenre(string GenreId);
 
         IEnumerable<Keyword> GetGenreKeywords(string GenreId, string KeywordTypeId = "");

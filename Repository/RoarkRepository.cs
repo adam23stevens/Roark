@@ -17,7 +17,6 @@ namespace Repository
             _ctx = ctx;
         }
 
-
         public IEnumerable<Genre> GetAllGenres()
         {
             return _ctx.Genres;
@@ -25,7 +24,7 @@ namespace Repository
 
         public IEnumerable<KeywordType> GetAllKeywordTypes()
         {
-            throw new NotImplementedException();
+            return _ctx.KeywordTypes;
         }
 
         public IEnumerable<Rudewords> GetAllRudewords()
@@ -35,77 +34,94 @@ namespace Repository
 
         public IEnumerable<Story> GetAllStories()
         {
-            throw new NotImplementedException();
+            return _ctx.Stories;
         }
 
         public IEnumerable<User> GetAllUsers()
         {
-            throw new NotImplementedException();
+            return _ctx.Users;
         }
 
         public Genre GetGenre(string GenreId)
         {
-            throw new NotImplementedException();
+            var genre = _ctx.Genres.First(g => g.Id == GenreId);
+            return genre;
         }
 
         public IEnumerable<Keyword> GetGenreKeywords(string GenreId, string KeywordTypeId = "")
         {
-            throw new NotImplementedException();
+            IQueryable<Keyword> keywords = _ctx.Keywords.Where(k => k.GenreId == GenreId);
+            keywords = KeywordTypeId.Length > 0 ? keywords.Where(k => k.KeywordTypeId == KeywordTypeId) : keywords;
+
+            return keywords as IEnumerable<Keyword>;
         }
 
         public Rating GetRating(int RatingId)
         {
-            throw new NotImplementedException();
+            var rating = _ctx.Ratings.First(r => r.Id == RatingId);
+
+            return rating;
         }
 
         public Story GetStory(int StoryId)
         {
-            throw new NotImplementedException();
-        }
+            var story = _ctx.Stories.First(s => s.Id == StoryId);
 
-        public Genre GetStoryGenre(int StoryId)
-        {
-            throw new NotImplementedException();
-        }
-
-        public StoryPart GetStoryPart(int StoryId, int OrderNum)
-        {
-            throw new NotImplementedException();
+            return story;
         }
 
         public IEnumerable<StoryPart> GetStoryParts(int StoryId)
         {
-            throw new NotImplementedException();
+            IQueryable<StoryPart> storyParts = _ctx.StoryParts.Where(s => s.StoryId == StoryId);
+
+            return storyParts as IEnumerable<StoryPart>;
         }
 
         public IEnumerable<Rating> GetStoryRatings(int StoryId)
         {
-            throw new NotImplementedException();
+            IQueryable<Rating> ratings = _ctx.Ratings.Where(r => r.StoryId == StoryId);
+
+            return ratings as IEnumerable<Rating>;
         }
 
         public IEnumerable<User> GetStoryUsers(int StoryId)
         {
-            throw new NotImplementedException();
+            var users = _ctx.StoryParts.Where(sp => sp.StoryId == StoryId)
+                                       .Select(sp => sp.User);
+
+            return users;
         }
 
         public User Getuser(int UserId)
         {
-            throw new NotImplementedException();
+            var user = _ctx.Users.First(u => u.UserId == UserId);
+
+            return user;
         }
 
         public IEnumerable<Rating> GetUserRatings(int UserId)
         {
-            throw new NotImplementedException();
+            IQueryable<Rating> ratings = _ctx.Ratings.Where(r => r.UserId == UserId);
+
+            return ratings as IEnumerable<Rating>;
         }
 
-        public IEnumerable<Story> GetUserStories(int StoryId)
+        public IEnumerable<Story> GetUserStories(int UserId)
         {
-            throw new NotImplementedException();
+            IQueryable<StoryPart> storyParts = _ctx.StoryParts.Where(sp => sp.UserId == UserId);
+
+            var stories = storyParts.Select(sp => sp.Story);
+
+            return stories;
         }
 
-        public IEnumerable<StoryPart> GetUserStoryParts(int UserId)
+        public IEnumerable<StoryPart> GetUserStoryParts(int StoryId, int UserId)
         {
-            throw new NotImplementedException();
+            var story = GetStory(StoryId);
+            IQueryable<StoryPart> storyParts = _ctx.StoryParts.Where(sp => sp.StoryId == StoryId)
+                                                              .Where(sp => sp.UserId == UserId);
+
+            return storyParts as IEnumerable<StoryPart>;
         }
     }
 }
