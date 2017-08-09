@@ -17,6 +17,54 @@ namespace Repository
             _ctx = ctx;
         }
 
+        public void AddRating(Rating rating)
+        {
+            try
+            {
+                _ctx.BeginTransaction();
+                _ctx.Ratings.Add(rating);
+                _ctx.SetModified(rating);
+                _ctx.CommitTransaction();
+            }
+            catch
+            {
+                _ctx.RollbackTransaction();
+                throw;
+            }
+        }
+
+        public void AddStory(Story story)
+        {
+            try
+            {
+                _ctx.BeginTransaction();
+                _ctx.Stories.Add(story);
+                _ctx.SetModified(story);
+                _ctx.CommitTransaction();
+            }
+            catch
+            {
+                _ctx.RollbackTransaction();
+                throw;
+            }
+        }
+
+        public void AddStoryPart(StoryPart storyPart)
+        {
+            try
+            {
+                _ctx.BeginTransaction();
+                _ctx.StoryParts.Add(storyPart);
+                _ctx.SetModified(storyPart);
+                _ctx.CommitTransaction();
+            }
+            catch
+            {
+                _ctx.RollbackTransaction();
+                throw;
+            }
+        }
+
         public IEnumerable<Genre> GetAllGenres()
         {
             return _ctx.Genres;

@@ -13,12 +13,18 @@ namespace RepositoryContract
         Story GetStory(int StoryId);
         IEnumerable<Story> GetUserStories(int UserId);
 
+        void AddStory(Story story);
+
         IEnumerable<StoryPart> GetStoryParts(int StoryId);        
         IEnumerable<StoryPart> GetUserStoryParts(int StoryId, int UserId);
+
+        void AddStoryPart(StoryPart storyPart);
 
         IEnumerable<Rating> GetUserRatings(int UserId);
         IEnumerable<Rating> GetStoryRatings(int StoryId);
         Rating GetRating(int RatingId);
+
+        void AddRating(Rating rating);
 
         IEnumerable<User> GetAllUsers();
         IEnumerable<User> GetStoryUsers(int StoryId);

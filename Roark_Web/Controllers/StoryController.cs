@@ -1,4 +1,8 @@
-﻿using Entities;
+﻿using Abstract;
+using Entities;
+using RepositoryContract;
+using Roark_Web.Models;
+using Roark_Web.Models.ModelFactory;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,82 +13,37 @@ namespace Roark_Web.Controllers
 {
     public class StoryController : Controller
     {
-        // GET: Story
+        private IRoarkService _roarkService;
+        private IRepository _repository;
+        private IUserHelper _userHelper;
+
+        public StoryController(IRoarkService roarkService, IRepository repository, IUserHelper userHelper)
+        {
+            _roarkService = roarkService;
+            _repository = repository;
+            _userHelper = userHelper;
+        }
+        
         public ActionResult Index()
         {
-            return View();
-        }
+            User currUser = _userHelper.GetCurrentUser();
+            var allUserStories = _roarkService.GetUserStories(currUser.UserId);
 
-        // GET: Story/Details/5
+            var model = allUserStories.Select(s => ToVMFactory.ToStoryVM(s));
+
+            return View(model);
+        }
+        
+        //Use roarkService to generate the end story here
         public ActionResult Details(int id)
         {
             return View();
         }
 
-        // GET: Story/Create
         public ActionResult Create()
         {
             return View();
         }
 
-        // POST: Story/Create
-        [HttpPost]
-        public ActionResult Create(FormCollection collection)
-        {
-            try
-            {
-                // TODO: Add insert logic here
-
-                return RedirectToAction("Index");
-            }
-            catch
-            {
-                return View();
-            }
-        }
-
-        // GET: Story/Edit/5
-        public ActionResult Edit(int id)
-        {
-            return View();
-        }
-
-        // POST: Story/Edit/5
-        [HttpPost]
-        public ActionResult Edit(int id, FormCollection collection)
-        {
-            try
-            {
-                // TODO: Add update logic here
-
-                return RedirectToAction("Index");
-            }
-            catch
-            {
-                return View();
-            }
-        }
-
-        // GET: Story/Delete/5
-        public ActionResult Delete(int id)
-        {
-            return View();
-        }
-
-        // POST: Story/Delete/5
-        [HttpPost]
-        public ActionResult Delete(int id, FormCollection collection)
-        {
-            try
-            {
-                // TODO: Add delete logic here
-
-                return RedirectToAction("Index");
-            }
-            catch
-            {
-                return View();
-            }
-        }
     }
 }
